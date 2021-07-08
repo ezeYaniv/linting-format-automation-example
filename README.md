@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Summary: What does this project do?
 
-## Available Scripts
+This is a default React app that integrates linting & formatting tools with git hooks.
 
-In the project directory, you can run:
+## What technologies/skills/concepts does this project practice?
 
-### `npm start`
+- ESLint
+- Prettier
+- lint-staged
+- husky
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Under the hood: How does this project work?
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Configuration files for ESLint and Prettier specify rules which will be followed for all users working on this project.
+2. Husky is set up to run commands listed in '.husky/pre-commit' whenever a user runs 'git commit'.
+3. Husky runs lint-staged, which intelligently targets only files which changed and are staged (with git add, for example).
+4. lint-staged runs ESLint and Prettier on the staged files based on the configuration specified in 'package.json'.
+5. If ESLint throws no errors, then the staged files are formatted according to Prettier rules and are actually committed.
+6. Otherwise, terminal displays linting errors which user must fix before committing.
 
-### `npm test`
+Note: .vscode/settings.json sets VSCode's default formatter for this project to Prettier, and allows reformatting on save. This is a user choice, as files will be formatted automatically through lint-staged even if user does not press Ctrl+S while working on a file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Note 2: .prettierignore is a copy of gitignore
 
-### `npm run build`
+Note 3: .eslintcache is added to gitignore - it is an auto-generated build file which will appear as a changed file and block branch switching
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Current status: What should future me know about where this project left off?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Potential next steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Add more git hooks to .husky folder for practice
+- Change lint-staged properties in 'package.json' to include other file formats (json?)
